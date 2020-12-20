@@ -109,12 +109,13 @@ public class Controller {
         while(in.hasNext()){
             String s=in.nextLine();
             seqLen+=s.length();
-            sequence.append(s+'\n');
+            sequence.append(s);
         }
         seq=sequence.toString();
         countPerc(sequence.toString());
         seq_len.setText(String.valueOf(seqLen));
         seq_disp.setStyle("-fx-font-family: Consolas;-fx-font-size: 14;");
+        seq_disp.setWrapText(true);
         seq_disp.setText(sequence.toString());
         skewInitialise(sequence.toString());
     }
