@@ -78,8 +78,8 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="Start" layoutX="91.0" layoutY="96.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
-                        <TextField fx:id="End" layoutX="376.0" layoutY="96.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
+                        <TextField fx:id="Start" layoutX="91.0" layoutY="96.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
+                        <TextField fx:id="End" layoutX="376.0" layoutY="96.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
                         <Label layoutX="31.0" layoutY="98.0" style="-fx-font-family: Optima;" text="Start:" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
@@ -93,12 +93,12 @@
                         <CheckBox fx:id="Reverse" layoutX="73.0" layoutY="154.0" mnemonicParsing="false" style="-fx-font-family: Optima;" text="Reverse" textFill="WHITE" />
                         <CheckBox fx:id="Complement" layoutX="176.0" layoutY="154.0" mnemonicParsing="false" style="-fx-font-family: Optima;" text="Complement" textFill="WHITE" />
                         <TextArea fx:id="ext_seq_disp" layoutX="227.0" layoutY="192.0" prefHeight="458.0" prefWidth="658.0" style="-fx-background-color: #fff;" />
-                        <Label layoutX="17.0" layoutY="508.0" style="-fx-font-family: Optima;" text="Save to file named:">
+                        <Label layoutX="17.0" layoutY="508.0" style="-fx-font-family: Optima;" text="Save to file named:" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="save_extract" layoutX="17.0" layoutY="540.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
+                        <TextField fx:id="save_extract" layoutX="17.0" layoutY="540.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
                         <Button fx:id="Extract" layoutX="414.0" layoutY="148.0" mnemonicParsing="false" onAction="#perf_extract" style="-fx-font-family: Optima; -fx-background-color: #2b5d6b; -fx-background-radius: 15px;" text="Extract" textFill="WHITE">
                            <font>
                               <Font size="13.0" />
@@ -122,7 +122,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="Enter_pattern" layoutX="197.0" layoutY="42.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
+                        <TextField fx:id="Enter_pattern" layoutX="197.0" layoutY="42.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
                         <CheckBox fx:id="Complement_also" layoutX="184.0" layoutY="86.0" mnemonicParsing="false" style="-fx-font-family: Optima;" text="Complement Strand also" textFill="WHITE" />
                         <TextArea fx:id="pattern_details" layoutX="207.0" layoutY="135.0" prefHeight="500.0" prefWidth="664.0" style="-fx-background-color: #fff;" />
                         <Label layoutX="17.0" layoutY="508.0" style="-fx-font-family: Optima;" text="Save to file named:" textFill="WHITE">
@@ -130,7 +130,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="save_pattern" layoutX="17.0" layoutY="540.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
+                        <TextField fx:id="save_pattern" layoutX="17.0" layoutY="540.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
                         <Button fx:id="pattern_save" layoutX="17.0" layoutY="576.0" mnemonicParsing="false" onAction="#save_pattern_result" style="-fx-font-family: Optima; -fx-background-color: #2b5d6b; -fx-background-radius: 15px;" text="Save" textFill="WHITE">
                            <font>
                               <Font size="13.0" />
@@ -149,7 +149,7 @@
                   <Pane fx:id="oriGC" prefHeight="200.0" prefWidth="200.0">
                      <children>
                          <Button fx:id="find_ori" layoutX="28.0" layoutY="34.0" mnemonicParsing="false" onAction="#display_ori" style="-fx-font-family: Optima; -fx-background-color: #2b5d6b; -fx-background-radius: 15px;" text="Find Ori" textFill="WHITE" />
-                         <TextField fx:id="ori" layoutX="115.0" layoutY="34.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
+                         <TextField fx:id="ori" layoutX="115.0" layoutY="34.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: #fff; -fx-background-radius: 15px;" />
                      </children></Pane>
                </content>
             </Tab>

@@ -93,7 +93,7 @@
                         <CheckBox fx:id="Reverse" layoutX="73.0" layoutY="154.0" mnemonicParsing="false" style="-fx-font-family: Optima;" text="Reverse" textFill="WHITE" />
                         <CheckBox fx:id="Complement" layoutX="176.0" layoutY="154.0" mnemonicParsing="false" style="-fx-font-family: Optima;" text="Complement" textFill="WHITE" />
                         <TextArea fx:id="ext_seq_disp" layoutX="227.0" layoutY="192.0" prefHeight="458.0" prefWidth="658.0" style="-fx-background-color: #fff;" />
-                        <Label layoutX="17.0" layoutY="508.0" style="-fx-font-family: Optima;" text="Save to file named:">
+                        <Label layoutX="17.0" layoutY="508.0" style="-fx-font-family: Optima;" text="Save to file named:" textFill="WHITE">
                            <font>
                               <Font size="15.0" />
                            </font>
