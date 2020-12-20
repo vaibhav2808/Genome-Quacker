@@ -193,8 +193,6 @@ public class Controller {
         Pane p=new Pane();
         int GCdiff[]=new int[s.length()];
         int ATdiff[]=new int[s.length()];
-        int ATsum[]=new int[s.length()];
-        int GCsum[]=new int[s.length()];
         int c_count=0;
         int g_count=0,a_count=0,t_count=0;
         int min_diff=Integer.MAX_VALUE;
@@ -214,9 +212,7 @@ public class Controller {
             else
                 t_count++;
 
-            GCsum[i]=g_count+c_count;
             GCdiff[i]=g_count-c_count;
-            ATsum[i]=a_count+t_count;
             ATdiff[i]=a_count-t_count;
 //            System.out.print(GCdiff[i]+",");
             if(GCdiff[i]<min_diff) {
@@ -260,9 +256,7 @@ public class Controller {
             double Atsumavg=0,Gcsumavg=0,Atdiffavg=0,Gcdiffavg=0;
             int count=0;
             for(int j=0;j<10;j++){
-                if(i*consta+j<ATsum.length) {
-                    Atsumavg += ATsum[i * consta + j];
-                    Gcsumavg += GCsum[i * consta + j];
+                if(i*consta+j<ATdiff.length) {
                     Atdiffavg += ATdiff[i * consta + j];
                     Gcdiffavg += GCdiff[i * consta + j];
                     count++;
