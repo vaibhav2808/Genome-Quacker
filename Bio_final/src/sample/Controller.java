@@ -5,15 +5,13 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
@@ -36,11 +34,29 @@ public class Controller {
     @FXML
     Button find_ori;
     @FXML
+    CheckBox Reverse;
+    @FXML
+    CheckBox Complement;
+    @FXML
+    Button Find;
+    @FXML
+    Button Extract;
+    @FXML
+    Button extract_save;
+    @FXML
+    CheckBox Complement_also;
+    @FXML
+    Button pattern_save;
+    @FXML
     TextField FileOpen;
     @FXML
     TextField FileDesc;
     @FXML
     TextArea seq_disp;
+    @FXML
+    TextArea ext_seq_disp;
+    @FXML
+    TextArea pattern_details;
     @FXML
     TextField seq_len;
     @FXML
@@ -54,7 +70,20 @@ public class Controller {
     @FXML
     TextField ori;
     @FXML
+    TextField Start;
+    @FXML
+    TextField End;
+    @FXML
+    TextField save_extract;
+    @FXML
+    TextField Enter_pattern;
+    @FXML
+    TextField save_pattern;
+    @FXML
     Pane plt;
+    String seq;
+    String ext_seq;
+    String pattern_result;
     double countA,countT,countG,countC;
     int seqLen=0;
     int oric,ter;
@@ -82,6 +111,7 @@ public class Controller {
             seqLen+=s.length();
             sequence.append(s+'\n');
         }
+        seq=sequence.toString();
         countPerc(sequence.toString());
         seq_len.setText(String.valueOf(seqLen));
         seq_disp.setStyle("-fx-font-family: Consolas;-fx-font-size: 14;");
@@ -282,6 +312,84 @@ public class Controller {
     public void display_ori(ActionEvent e){
         ori.setText(String.valueOf(oric));
     }
-
+    public void perf_extract(ActionEvent E){
+        ext_seq=extractSequence(seq,(Integer.valueOf(Start.getText())-1),(Integer.valueOf(End.getText())-1),Reverse.isSelected(),Complement.isSelected());
+        ext_seq_disp.setWrapText(true);
+        ext_seq_disp.setStyle("-fx-font-family: Consolas;-fx-font-size: 14;");
+        ext_seq_disp.setText(ext_seq);
+    }
+    public String extractSequence(String s,int start,int end,boolean reversed,boolean complement){
+        String str=s.substring(start,end+1);
+        if(reversed)
+            str=new StringBuilder().append(str).reverse().toString();
+        if(complement)
+            str=complement(str);
+        return str;
+    }
+    public String complement(String reverse){
+        char arr[]=reverse.toCharArray();
+        StringBuilder str=new StringBuilder(arr.length);
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]=='A')
+                str.append('T');
+            else if(arr[i]=='T')
+                str.append('A');
+            else if(arr[i]=='G')
+                str.append('C');
+            else
+                str.append('G');
+        }
+        return str.toString();
+    }
+    public void save_ext(ActionEvent e) throws IOException {
+        BufferedWriter bw=new BufferedWriter(new FileWriter("savedFiles/"+save_extract.getText()+".txt"));
+        bw.write(ext_seq);
+        bw.close();
+    }
+    public void searchPattern(ActionEvent e){
+        pattern_result=patternSearch(seq,Enter_pattern.getText(),Complement_also.isSelected());
+        pattern_details.setWrapText(true);
+        pattern_details.setStyle("-fx-font-family: Consolas;-fx-font-size: 14;");
+        pattern_details.setText(pattern_result);
+    }
+    public String patternSearch(String text,String pattern,boolean reverseComplement){
+        StringBuilder s=new StringBuilder("");
+        s.append("Pattern: "+Enter_pattern.getText()+"\n\n");
+        s.append("Normal Strand: ");
+        ArrayList<Integer> pos=new ArrayList<>(patternSearchHelper(text, pattern));
+        int i;
+        for(i=0;i<pos.size();i++){
+            s.append(pos.get(i)+",");
+        }
+        if(reverseComplement){
+            pos.addAll(patternSearchHelper(text, reverseComplement(pattern)));
+            s.append("\n\nComplement Strand: ");
+            for(;i<pos.size();i++){
+                s.append(pos.get(i)+",");
+            }
+        }
+        return s.toString();
+    }
+    public ArrayList<Integer> patternSearchHelper(String text, String pattern){
+        ArrayList<Integer> positions=new ArrayList<>();
+        int i=0,temp;
+        while(true){
+            temp=text.indexOf(pattern,i);
+            if(temp==-1)
+                break;
+            positions.add(temp);
+            i=temp+1;
+        }
+        return positions;
+    }
+    public String reverseComplement(String forward){
+        String reverse=new StringBuilder().append(forward).reverse().toString();
+        return complement(reverse);
+    }
+    public void save_pattern_result(ActionEvent e) throws IOException {
+        BufferedWriter bw=new BufferedWriter(new FileWriter("savedFiles/"+save_pattern.getText()+".txt"));
+        bw.write(pattern_result);
+        bw.close();
+    }
 
 }
