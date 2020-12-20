@@ -331,8 +331,10 @@ public class Controller {
                 str.append('A');
             else if(arr[i]=='G')
                 str.append('C');
-            else
+            else if(arr[i]=='C')
                 str.append('G');
+            else
+                str.append(arr[i]);
         }
         return str.toString();
     }
