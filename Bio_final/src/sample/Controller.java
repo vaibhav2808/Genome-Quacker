@@ -285,12 +285,14 @@ public class Controller {
     public Pane drawSkew(double diff[]){
         Pane p=new Pane();
         NumberAxis x_axis=new NumberAxis();
+        x_axis.setLabel("Position");
         NumberAxis y_axis=new NumberAxis();
         LineChart<Number,Number> bc =new LineChart<>(x_axis,y_axis);
         bc.setTitle("Skew plot");
         bc.setAnimated(false);
         bc.setCreateSymbols(false);
         XYChart.Series series=new XYChart.Series();
+        series.setName("Skew Value");
         final int consta=10;
 
         XYChart.Data ar[]=new XYChart.Data[diff.length];
